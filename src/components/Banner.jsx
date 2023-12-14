@@ -5,7 +5,7 @@ import banner from "../assets/images/banner.png"
 function Banner(){
 
     return(
-    <div className={`${styles.Banner} `}>
+    <div className={`${styles.Banner} ${screenWidth<675 ? "remove" : ""}`}>
         <div className={styles.center}>
             <img src={banner}/>
             <h2>Pocket Notes</h2>
