@@ -1,6 +1,6 @@
 import React from 'react'
 import GroupsHandler from '../components/Hoc/GroupsHandler'
-import NotesArea from '../components/NotesArea/NotesArea'
+import NotesArea from '../components/NotesSection/NotesArea'
 
 function NotesPage() {
   return (
