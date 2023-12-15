@@ -9,6 +9,5 @@ const HomePage = () => {
     </GroupsHandler>
   )
 }
-
 export default HomePage
 
