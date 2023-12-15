@@ -3,7 +3,7 @@ import styles from '../css/NotesArea.module.scss'
 import GroupName from '../GroupSection/GroupName';
 import BackArrow from '../../assets/icons/BackArrow'
 import NoteCard from './NoteCard';
-import WritingArea from './WritingArea';
+import WritingArea from './NoteWriting';
 import { useParams, Link } from 'react-router-dom';
 import {useWidth} from '../../Hooks/widthContext'
 

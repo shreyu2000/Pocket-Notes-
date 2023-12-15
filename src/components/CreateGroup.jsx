@@ -1,58 +1,56 @@
-import React , {useMemo, useState}  from 'react'
-import styles from "./css/CreateGroup.scss"
+import React, { useMemo, useState } from 'react'
+import styles from './css/CreateGroup.module.scss'
 
+const groupColors = ["#B38BFA", "#FF79F2", "#43E6FC", "#F19576", "#0047FF", "#6691FF"]
 
-const colorArray =["#B38BFA","#FF79F2", "#43E6FC", "#F19576", "#0047FF", "#6691FF"]
+function CreateGroup({
+    groups,
+    addGroup,
+}) {
 
-const CreateGroup = ({
-    groups ,addGroup
-}) => {
-    const [groupName ,setGroupName] = useState("");
-    const [groupColor ,setGroupColor] = useState("");
-    const [nameError , setNameError] =useState("");
-    const [colorError ,setColorError] = useState("false");
+    const [groupName, setGroupName] = useState("");
+    const [groupColor, setGroupColor] = useState("");
+    const [nameError, setNameError] = useState("");
+    const [colorError, setColorError] = useState(false);
 
-    const groupIds = useMemo(()=>{
-        return groups.map((group)=>group.groupId)
+    const groupIds = useMemo(()=> {
+        return groups.map((group)=> group.groupId)
     }, [])
 
-
-    // It removes non-alphanumeric characters, converts the string to lowercase, 
-    const slugTransform = (value)=>{
-        if(value && typeof value === "string")
+    const slugTransform = (value)=> {
+        if(value && typeof value === "string") 
         return value.trim().toLowerCase().replace(/[^a-zA-Z\d]+/g, "-");
     }
 
-    const handleGroupNameChange = (e) =>{
+    const handleGroupNameChange = (e)=> {
         setGroupName(e.target.value)
         !groupIds.includes(slugTransform(e.target.value)) ? (nameError && setNameError("")) : setNameError("Name already exists");
     }
-    
 
-    const handleSubmitGroup = () =>{
+    const handleSubmitGroup = ()=> {
         let error = false;
-        if(groupColor === ""){
+        if(groupColor === "") {
             setColorError(true)
-            error =true;
+            error = true;
         }
-
-        if(groupName.trim().length === 0){
-            setNameError("Name is Invalid")
-            error = true ;
+        
+        if(groupName.trim().length===0) {
+            setNameError("Name is invalid!")
+            error = true;
         }
-        else if(nameError) error =true;
+        else if(nameError) error = true;
 
         if(error) return
+
         const newGroup = {
-            groupName : groupName.trim(),
-            groupId :slugTransform(groupName),
-            bgColor:groupColor
+            groupName: groupName.trim(),
+            groupId: slugTransform(groupName),
+            bgColor: groupColor
         }
-
         addGroup(newGroup);
-
     }
-  return (
+
+  return ( 
     <div className={styles.create_group} onClick={(e)=> e.stopPropagation()}>
         <h3>Create New Group</h3>
         <div className={styles.group_input}>
@@ -75,5 +73,7 @@ const CreateGroup = ({
     </div>
   )
 }
-
 export default CreateGroup;
+
+
+

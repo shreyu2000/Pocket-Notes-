@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import GroupArea from '../GroupArea/GroupSection'
+import GroupArea from '../GroupSection/GroupArea'
 import CreateGroup from '../CreateGroup'
 import styles from '../css/GroupsHandler.module.scss'
 
